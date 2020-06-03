@@ -1,27 +1,31 @@
 # ProyectoLogin
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
+## División del trabajo
 
-## Development server
+Son 4 vistas:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- **Login:**
+    - Nombre del componente: login
+    - A cargo de: Riojas
+    - Nombre del Brach: Riojas
+- **Registro**
+    - Nombre del componente: registro
+    - A cargo de: 
+    - Nombre del Brach:
+    
+- **Listado usuarios**
+    - Nombre del componente: listarUsuarios
+    - A cargo de: 
+    - Nombre del Brach:
+- **Editar usuario**
+    - Nombre del componente: editarUsuario
+    - A cargo de: 
+    - Nombre del Brach:
+    
+## Generalidades
+- Cada modulo tiene sus propios CCS. Evitar usar el style.css por posibles conflictos.
+- Cada desarrollador va a crear la rama que va a trabajar dependiendo de la vista a trabajar y solo editará los archivos de su vista.
+- En caso de tener que trabajar sobre otra vista, deberá soliitarlo por el chat para evitar errores al realizar el merge.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
