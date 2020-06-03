@@ -1,0 +1,43 @@
+<div class="container-fluid bg-login" style="height: 100vh">
+    <div class="d-flex align-items-center justify-content-center h-100">
+
+        <div class="col-md-4 mx-auto">
+            <div class="card card-login">
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="login()">
+                        <h2 class="text-center"><b>Login</b></h2>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input formControlName="email" type="email" [class.is-invalid]="emailNoValid" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <span class="text-danger" *ngIf="emailNoValid || form.controls['email'].hasError('pattern')"><small>El email no es válido</small></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Contraseña</label>
+                            <input formControlName="password" type="password" [class.is-invalid]="passwordNoValid" class="form-control" id="exampleInputPassword1">
+                            <span class="text-danger" *ngIf="passwordNoValid || form.controls['password'].hasError('pattern')"><small>La contraseña debe contener por lo menos 8 caracteres, una mayúscula, una minúscula y un número</small></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <div class="form-check">
+                                    <input formControlName="recordarme" type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary w-100">Registrarse</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
