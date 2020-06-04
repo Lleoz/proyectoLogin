@@ -50,4 +50,8 @@ export class ListarUsuariosComponent implements OnInit {
     this.users = usersList.slice(pageFrom, pageFrom + itemsPage);
   }
 
+  editUser(userId) {
+    alert('Editar usuario ' + userId);
+  }
+
 }
