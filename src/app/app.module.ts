@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { OnlyNumbersDirective } from './utils/only-numbers.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    OnlyNumbersDirective
   ],
   imports: [
     BrowserModule,
