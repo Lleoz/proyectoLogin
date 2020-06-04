@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <form [formGroup]="registerForm">
+          <div class="card-header">
+            <div class="card-title">
+              Registro
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Nombre completo</label>
+                  <input type="text" class="form-control" formControlName="fullName" [class.is-invalid]="fullName.touched && fullName.hasError('required')">
+                  <div class="invalid-feedback" *ngIf="fullName.touched && fullName.hasError('required')">
+                    Requerido
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Correo electr&oacute;nico</label>
+                  <input type="text" class="form-control" formControlName="email" [class.is-invalid]="(email.touched && fullName.hasError('required')) || email.hasError('email')">
+                  <div class="invalid-feedback" *ngIf="email.touched && email.hasError('required')">
+                    Requerido
+                  </div>
+                  <div class="invalid-feedback" *ngIf="email.hasError('email')">
+                    Correo electr&oacute;nico inv&aacute;lido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Fecha de nacimiento</label>
+                  <input type="date" class="form-control" formControlName="birthday" [class.is-invalid]="(birthday.touched && birthday.hasError('required'))">
+                  <div class="invalid-feedback" *ngIf="birthday.touched && birthday.hasError('required')">
+                    Requerido
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">N&uacute;mero de tel&eacute;fono</label>
+                  <input type="text" class="form-control" formControlName="phoneNumber" [class.is-invalid]="(phoneNumber.touched && phoneNumber.hasError('required'))">
+                  <div class="invalid-feedback" *ngIf="phoneNumber.touched && phoneNumber.hasError('required')">
+                    Requerido
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Sexo</label>
+                  <select class="form-control" formControlName="sex" [class.is-invalid]="(sex.touched && sex.hasError('required'))">
+                    <option value="" selected="true">[Seleccione el sexo]</option>
+                    <option value="h">Hombre</option>
+                    <option value="m">Mujer</option>
+                  </select>
+                  <div class="invalid-feedback" *ngIf="sex.touched && sex.hasError('required')">
+                    Requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid">Guardar</button>
+                </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
