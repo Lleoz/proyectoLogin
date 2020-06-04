@@ -16,7 +16,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of users">
-                            <th scope="row">{{ user.Id }}</th>
+                            <td>
+                                <ngb-highlight [result]="user.id"></ngb-highlight>
+                            </td>
                             <td>
                                 <ngb-highlight [result]="user.nombreCompleto"></ngb-highlight>
                             </td>
@@ -36,16 +38,16 @@
                     </tbody>
                 </table>
 
-                <!-- <div class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+                <div class="d-flex justify-content-between p-2">
+                    <ngb-pagination [collectionSize]="total" [(page)]="page" [pageSize]="pageSize">
                     </ngb-pagination>
 
-                    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-                      <option [ngValue]="2">2 items per page</option>
-                      <option [ngValue]="4">4 items per page</option>
-                      <option [ngValue]="6">6 items per page</option>
+                    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="pageSize">
+                        <option [ngValue]="5">5</option>
+                        <option [ngValue]="10">10</option>
+                        <option [ngValue]="50">50</option>
                     </select>
-                </div> -->
+                </div>
 
             </div>
         </div>

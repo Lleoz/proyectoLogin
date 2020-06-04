@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, TypeGenero } from 'src/app/models/user.model';
+import { usersList } from 'src/app/models/users';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -7,27 +8,17 @@ import { User, TypeGenero } from 'src/app/models/user.model';
   styleUrls: ['./listar-usuarios.component.css']
 })
 export class ListarUsuariosComponent implements OnInit {
-
-  users: User[] = [{
-    id: 1,
-    nombreCompleto: 'Usuario 1',
-    email: 'usuario1@mail.com',
-    fechaDeNacimiento: new Date(1999, 3, 2),
-    telefono: '+5422225555',
-    genero: TypeGenero.Hombre
-  },
-  {
-    id: 2,
-    nombreCompleto: 'Usuario 2',
-    email: 'usuario2@mail.com',
-    fechaDeNacimiento: new Date(2001, 5, 21),
-    telefono: '+5599998888',
-    genero: TypeGenero.Mujer
-  }];
+  total = 0;
+  page = 0;
+  pageSize = 10;
+  users: User[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    const pageFrom = this.page * this.pageSize;
+    this.users = usersList.slice(pageFrom, pageFrom + this.pageSize);
+    this.total = usersList.length;
   }
 
 }
