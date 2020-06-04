@@ -118,9 +118,12 @@
                 }
             }
         }
-    },
-    "defaultProject": "proyectoLogin",
-    "cli": {
-        "analytics": "37afb04c-764a-44a0-8522-43891aa3618b"
+      }
     }
+  },
+  "defaultProject": "proyectoLogin",
+  "cli": {
+    "analytics": "8b08faec-d333-4019-8117-fe79a93c8f3b"
+  }
+
 }
