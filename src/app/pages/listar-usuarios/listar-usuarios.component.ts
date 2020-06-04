@@ -9,16 +9,45 @@ import { usersList } from 'src/app/models/users';
 })
 export class ListarUsuariosComponent implements OnInit {
   total = 0;
-  page = 0;
-  pageSize = 10;
+  pageSt: number;
+  pageSizeSt: number;
   users: User[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    const pageFrom = this.page * this.pageSize;
-    this.users = usersList.slice(pageFrom, pageFrom + this.pageSize);
     this.total = usersList.length;
+
+    this.pageSt = 1;
+    this.pageSizeSt = 10;
+
+    this.updatePages();
+  }
+
+  get page() {
+    return this.pageSt;
+  }
+
+  set page(page: number) {
+    this.pageSt = page;
+    this.updatePages();
+  }
+
+  get pageSize() {
+    return this.pageSizeSt;
+  }
+
+  set pageSize(pageSize: number) {
+    this.pageSizeSt = pageSize;
+    this.updatePages();
+  }
+
+  private updatePages() {
+    const pageBase = this.pageSt - 1;
+    const itemsPage = Math.min(this.pageSizeSt, this.total);
+
+    const pageFrom = pageBase * itemsPage;
+    this.users = usersList.slice(pageFrom, pageFrom + itemsPage);
   }
 
 }

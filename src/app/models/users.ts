@@ -312,5 +312,172 @@ export const usersList: User[] = [
         fechaDeNacimiento: new Date(1980, 11, 1),
         telefono: '(936) 572-2284',
         genero: TypeGenero.Mujer
+    }, {
+        id: 40,
+        nombreCompleto: 'Irwin Weeks',
+        email: 'irwinweeks@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 11, 1),
+        telefono: '(831) 523-3139',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 41,
+        nombreCompleto: 'Cora Odom',
+        email: 'coraodom@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 11, 1),
+        telefono: '(993) 583-2216',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 42,
+        nombreCompleto: 'Duncan Delacruz',
+        email: 'duncandelacruz@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 0, 28),
+        telefono: '(998) 403-3625',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 43,
+        nombreCompleto: 'Laurie Boyer',
+        email: 'laurieboyer@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 0, 1),
+        telefono: '(874) 421-3573',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 44,
+        nombreCompleto: 'Victoria Sharpe',
+        email: 'victoriasharpe@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 28),
+        telefono: '(990) 582-3886',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 45,
+        nombreCompleto: 'Dorthy Dillon',
+        email: 'dorthydillon@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 28),
+        telefono: '(939) 418-2101',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 46,
+        nombreCompleto: 'Juliette Parrish',
+        email: 'julietteparrish@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 11, 1),
+        telefono: '(955) 400-3626',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 47,
+        nombreCompleto: 'Gilliam Romero',
+        email: 'gilliamromero@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 1),
+        telefono: '(940) 488-2955',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 48,
+        nombreCompleto: 'Daniels Bridges',
+        email: 'danielsbridges@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 1),
+        telefono: '(887) 461-2584',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 49,
+        nombreCompleto: 'Casey Sims',
+        email: 'caseysims@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 1),
+        telefono: '(956) 405-3251',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 50,
+        nombreCompleto: 'Liza Palmer',
+        email: 'lizapalmer@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 11, 28),
+        telefono: '(991) 523-3184',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 51,
+        nombreCompleto: 'Hancock Valenzuela',
+        email: 'hancockvalenzuela@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 11, 28),
+        telefono: '(830) 419-2781',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 52,
+        nombreCompleto: 'Jensen Kirk',
+        email: 'jensenkirk@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 11, 1),
+        telefono: '(900) 595-2032',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 53,
+        nombreCompleto: 'Dunlap Casey',
+        email: 'dunlapcasey@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 1),
+        telefono: '(901) 408-3379',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 54,
+        nombreCompleto: 'Robert Mayo',
+        email: 'robertmayo@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 0, 1),
+        telefono: '(962) 568-2304',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 55,
+        nombreCompleto: 'Annette Black',
+        email: 'annetteblack@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 11, 28),
+        telefono: '(825) 541-3204',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 56,
+        nombreCompleto: 'Burris Adams',
+        email: 'burrisadams@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 1),
+        telefono: '(893) 487-2938',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 57,
+        nombreCompleto: 'Francis Everett',
+        email: 'franciseverett@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 0, 1),
+        telefono: '(818) 456-2431',
+        genero: TypeGenero.Mujer
+    },
+    {
+        id: 58,
+        nombreCompleto: 'Erna Ayers',
+        email: 'ernaayers@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 0, 1),
+        telefono: '(998) 530-3642',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 59,
+        nombreCompleto: 'Bauer Mccall',
+        email: 'bauermccall@kidstock.com',
+        fechaDeNacimiento: new Date(2020, 0, 1),
+        telefono: '(959) 402-3956',
+        genero: TypeGenero.Hombre
+    },
+    {
+        id: 60,
+        nombreCompleto: 'Carver Wells',
+        email: 'carverwells@kidstock.com',
+        fechaDeNacimiento: new Date(1980, 11, 28),
+        telefono: '(924) 554-2295',
+        genero: TypeGenero.Mujer
     }
 ];
