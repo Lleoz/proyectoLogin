@@ -118,9 +118,7 @@
                 }
             }
         }
-      }
-    }
-  },
+      },
   "defaultProject": "proyectoLogin",
   "cli": {
     "analytics": "8b08faec-d333-4019-8117-fe79a93c8f3b"
