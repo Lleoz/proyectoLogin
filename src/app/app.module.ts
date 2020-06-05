@@ -9,6 +9,11 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { ListarUsuariosComponent } from './pages/listar-usuarios/listar-usuarios.component';
 import { GeneroPipe } from './pipes/genero.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -23,7 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule, NgxMaskModule.forRoot(maskConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

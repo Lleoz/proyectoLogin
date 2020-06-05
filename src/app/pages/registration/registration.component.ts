@@ -1,5 +1,7 @@
+import { DataStoreService } from './../../services/data-store.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +13,8 @@ export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dataStoreService: DataStoreService
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +26,8 @@ export class RegistrationComponent implements OnInit {
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       birthday: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      sex: ['', Validators.required]
+      phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
+      genre: ['', Validators.required]
     });
   }
 
@@ -44,20 +47,23 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.get('phoneNumber');
   }
 
-  get sex() {
-    return this.registerForm.get('sex');
+  get genre() {
+    return this.registerForm.get('genre');
   }
 
   register(form) {
-    const {fullName, email, birthday, phoneNumber, sex} = form.value;
+    const {fullName, email, birthday, phoneNumber, genre} = form.value;
     const userData = {
+      id: uuidv4(),
       fullName,
       email,
       birthday,
       phoneNumber,
-      sex
-    }
-    
+      genre
+    };
+
+    this.dataStoreService.addUser(userData);
+    this.registerForm.reset();
   }
 
 }
