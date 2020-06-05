@@ -46,7 +46,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">N&uacute;mero de tel&eacute;fono</label>
-                  <input appOnlyNumbers type="text" class="form-control" formControlName="phoneNumber" [class.is-invalid]="(phoneNumber.touched && phoneNumber.hasError('required')) || phoneNumber.hasError('minlength')">
+                  <input mask="(000) 000-0000" type="text" class="form-control" formControlName="phoneNumber" [class.is-invalid]="(phoneNumber.touched && phoneNumber.hasError('required')) || phoneNumber.hasError('minlength')">
                   <div class="invalid-feedback" *ngIf="phoneNumber.touched && phoneNumber.hasError('required')">
                     Requerido
                   </div>
@@ -58,12 +58,12 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Genero</label>
-                  <select class="form-control" formControlName="sex" [class.is-invalid]="(sex.touched && sex.hasError('required'))">
+                  <select class="form-control" formControlName="genre" [class.is-invalid]="(genre.touched && genre.hasError('required'))">
                     <option value="" selected="true">[Seleccione el genero]</option>
                     <option value="1">Masculino</option>
                     <option value="2">Femenino</option>
                   </select>
-                  <div class="invalid-feedback" *ngIf="sex.touched && sex.hasError('required')">
+                  <div class="invalid-feedback" *ngIf="genre.touched && genre.hasError('required')">
                     Requerido
                   </div>
                 </div>

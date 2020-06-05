@@ -27,4 +27,15 @@ export class DataStoreService {
     }
     return [];
   }
+
+  getUserById(id: string): any {
+    const users: [] = JSON.parse(localStorage.getItem(usersKey));
+
+    if (users) {
+      const user = users.filter((userData: any) => userData.id === id);
+      return user;
+    }
+
+    return undefined;
+  }
 }

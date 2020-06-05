@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       birthday: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
-      sex: ['', Validators.required]
+      genre: ['', Validators.required]
     });
   }
 
@@ -47,19 +47,19 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.get('phoneNumber');
   }
 
-  get sex() {
-    return this.registerForm.get('sex');
+  get genre() {
+    return this.registerForm.get('genre');
   }
 
   register(form) {
-    const {fullName, email, birthday, phoneNumber, sex} = form.value;
+    const {fullName, email, birthday, phoneNumber, genre} = form.value;
     const userData = {
       id: uuidv4(),
       fullName,
       email,
       birthday,
       phoneNumber,
-      sex
+      genre
     };
 
     this.dataStoreService.addUser(userData);
