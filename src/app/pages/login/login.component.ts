@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor( private fb: FormBuilder ) {
+  constructor( private fb: FormBuilder,
+               private route: Router ) {
     this.loadForm();
   }
 
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
     if ( this.form.controls.recordarme.value ) {
       localStorage.setItem( 'correo', this.form.controls.email.value );
     }
+
+    this.route.navigate(['/list']);
 
   }
 
