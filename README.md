@@ -15,12 +15,12 @@ Son 4 vistas:
     
 - **Listado usuarios**
     - Nombre del componente: listarUsuarios
-    - A cargo de: 
-    - Nombre del Brach:
+    - A cargo de: Programando Ideas
+    - Nombre del Brach: feature/user-edit
 - **Editar usuario**
     - Nombre del componente: editarUsuario
-    - A cargo de: 
-    - Nombre del Brach:
+    - A cargo de: Programando Ideas
+    - Nombre del Brach: feature/user-edit 
     
 ## Generalidades
 - Cada modulo tiene sus propios CCS. Evitar usar el style.css por posibles conflictos.
