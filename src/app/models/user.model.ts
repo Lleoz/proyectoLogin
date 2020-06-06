@@ -13,6 +13,7 @@ export interface User {
     id: string;
     fullName: string;
     email: string;
+    pwd: string;
     birthday: Date;
     phoneNumber: string; // Mínimo 10 dígitos
     genre: TypeGenero;

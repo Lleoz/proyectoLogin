@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Nombre completo</label>
                                     <input type="text" class="form-control" formControlName="fullName" [class.is-invalid]="fullName.touched && fullName.hasError('required')">
@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Correo electr&oacute;nico</label>
                                     <input type="text" class="form-control" formControlName="email" [class.is-invalid]="(email.touched && fullName.hasError('required')) || email.hasError('email')">
@@ -29,6 +29,16 @@
                                     <div class="invalid-feedback" *ngIf="email.hasError('email')">
                                         Correo electr&oacute;nico inv&aacute;lido
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Contraseña</label>
+                                    <input formControlName="pwd" type="password" [class.is-invalid]="passwordNoValid" class="form-control" id="exampleInputPassword1">
+                                    <span class="text-danger" *ngIf="passwordNoValid || registerForm.controls['pwd'].hasError('pattern')"><small>La
+                                            contraseña debe contener por lo menos 8 caracteres, una mayúscula, una
+                                            minúscula y un número</small></span>
                                 </div>
                             </div>
                         </div>
@@ -59,10 +69,10 @@
                                 <div class="form-group">
                                     <label for="">Genero</label>
                                     <select class="form-control" formControlName="genre" [class.is-invalid]="(genre.touched && genre.hasError('required'))">
-                    <option value="" selected="true">[Seleccione el genero]</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                  </select>
+                                        <option value="" selected="true">[Seleccione el genero]</option>
+                                        <option value="1">Masculino</option>
+                                        <option value="2">Femenino</option>
+                                    </select>
                                     <div class="invalid-feedback" *ngIf="genre.touched && genre.hasError('required')">
                                         Requerido
                                     </div>

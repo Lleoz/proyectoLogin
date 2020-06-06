@@ -41,11 +41,12 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   edit(form) {
-    const { fullName, email, birthday, phoneNumber, genre } = form.value;
+    const { fullName, email, pwd, birthday, phoneNumber, genre } = form.value;
     const userData: User = {
       id: this.userEdit.id,
       fullName,
       email,
+      pwd,
       birthday,
       phoneNumber,
       genre

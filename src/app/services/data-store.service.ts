@@ -26,7 +26,11 @@ export class DataStoreService {
       users.find((u, i) => {
         const isUser: boolean = u.id === userData.id;
         if (isUser) {
-          users[i] = userData;
+          users[i].fullName = userData.fullName;
+          users[i].email = userData.email;
+          users[i].birthday = userData.birthday;
+          users[i].phoneNumber = userData.phoneNumber;
+          users[i].genre = userData.genre;
         }
         return isUser;
       });
@@ -49,6 +53,17 @@ export class DataStoreService {
 
     if (users) {
       const user = users.find((userData: any) => userData.id === id);
+      return user;
+    }
+
+    return undefined;
+  }
+
+  getUserByEmail(email: string): any {
+    const users: [] = JSON.parse(localStorage.getItem(usersKey));
+
+    if (users) {
+      const user = users.find((userData: any) => userData.email === email);
       return user;
     }
 

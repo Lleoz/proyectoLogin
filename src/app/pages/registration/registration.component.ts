@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      pwd: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]],
       birthday: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
       genre: ['', Validators.required]
@@ -54,12 +55,18 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.get('genre');
   }
 
+  get passwordNoValid() {
+    return this.registerForm.get('pwd').touched &&
+      this.registerForm.get('pwd').invalid;
+  }
+
   register(form) {
-    const { fullName, email, birthday, phoneNumber, genre } = form.value;
+    const { fullName, email, pwd, birthday, phoneNumber, genre } = form.value;
     const userData: User = {
       id: uuidv4(),
       fullName,
       email,
+      pwd,
       birthday,
       phoneNumber,
       genre
