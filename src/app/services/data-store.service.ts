@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user.model';
 
 const usersKey = 'users';
 
@@ -6,7 +7,6 @@ const usersKey = 'users';
   providedIn: 'root'
 })
 export class DataStoreService {
-
   constructor() { }
 
   addUser(user: any) {
@@ -17,6 +17,22 @@ export class DataStoreService {
     } else {
       const newArray = [user];
       localStorage.setItem(usersKey, JSON.stringify(newArray));
+    }
+  }
+
+  updateUser(userData: User) {
+    const users: User[] = JSON.parse(localStorage.getItem(usersKey));
+    if (users) {
+      users.find((u, i) => {
+        const isUser: boolean = u.id === userData.id;
+        if (isUser) {
+          users[i] = userData;
+        }
+        return isUser;
+      });
+
+      console.log(users);
+      localStorage.setItem(usersKey, JSON.stringify(users));
     }
   }
 
@@ -32,7 +48,7 @@ export class DataStoreService {
     const users: [] = JSON.parse(localStorage.getItem(usersKey));
 
     if (users) {
-      const user = users.filter((userData: any) => userData.id === id);
+      const user = users.find((userData: any) => userData.id === id);
       return user;
     }
 

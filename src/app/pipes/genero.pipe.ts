@@ -6,12 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class GeneroPipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    if (value === 1) {
-      return 'Hombre';
+    if (value === '1') {
+      return 'Masculino';
     }
 
-    if (value === 2) {
-      return 'Mujer';
+    if (value === '2') {
+      return 'Femenino';
     }
 
     return 'n/c';

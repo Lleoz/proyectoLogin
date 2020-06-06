@@ -2,6 +2,8 @@ import { DataStoreService } from './../../services/data-store.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
+import { User } from 'src/app/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +16,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private dataStoreService: DataStoreService
+    private dataStoreService: DataStoreService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,8 +55,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(form) {
-    const {fullName, email, birthday, phoneNumber, genre} = form.value;
-    const userData = {
+    const { fullName, email, birthday, phoneNumber, genre } = form.value;
+    const userData: User = {
       id: uuidv4(),
       fullName,
       email,
@@ -63,7 +66,8 @@ export class RegistrationComponent implements OnInit {
     };
 
     this.dataStoreService.addUser(userData);
-    this.registerForm.reset();
+    // this.registerForm.reset();
+    this.route.navigate(['/list']);
   }
 
 }

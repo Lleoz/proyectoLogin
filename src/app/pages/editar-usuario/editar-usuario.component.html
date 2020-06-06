@@ -1,14 +1,15 @@
-<div class="container mt-3">
+<div class="container  mt-3">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <form [formGroup]="registerForm">
-                    <div class="card-header">
-                        <h4 class="card-title">
-                            Registro
-                        </h4>
-                    </div>
+                <form [formGroup]="editUserForm">
+                    <h4 class="card-header">
+                        Editar Usuario
+                    </h4>
                     <div class="card-body">
+                        <h6 class="card-title">
+                            id ({{userEdit.id}})
+                        </h6>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -59,10 +60,10 @@
                                 <div class="form-group">
                                     <label for="">Genero</label>
                                     <select class="form-control" formControlName="genre" [class.is-invalid]="(genre.touched && genre.hasError('required'))">
-                    <option value="" selected="true">[Seleccione el genero]</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                  </select>
+                      <option value="" selected="true">[Seleccione el genero]</option>
+                      <option value="1">Masculino</option>
+                      <option value="2">Femenino</option>
+                    </select>
                                     <div class="invalid-feedback" *ngIf="genre.touched && genre.hasError('required')">
                                         Requerido
                                     </div>
@@ -72,7 +73,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid">Guardar</button>
+                                <button class="btn btn-primary" (click)="edit(editUserForm)" [disabled]="editUserForm.invalid">Guardar</button>
                             </div>
                         </div>
 

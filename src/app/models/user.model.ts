@@ -1,6 +1,6 @@
 export enum TypeGenero {
-    Hombre = 1,
-    Mujer = 2
+    Masculino = 1,
+    Femenino = 2
 }
 /*
     •    Nombre completo
@@ -10,10 +10,11 @@ export enum TypeGenero {
     •    Hombre o mujer
 */
 export interface User {
-    id: number;
-    nombreCompleto: string;
+    id: string;
+    fullName: string;
     email: string;
-    fechaDeNacimiento: Date;
-    telefono: string; // Mínimo 10 dígitos
-    genero: TypeGenero;
+    birthday: Date;
+    phoneNumber: string; // Mínimo 10 dígitos
+    genre: TypeGenero;
 }
+

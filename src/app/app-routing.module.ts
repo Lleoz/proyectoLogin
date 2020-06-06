@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ListarUsuariosComponent } from './pages/listar-usuarios/listar-usuarios.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListarUsuariosComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EditarUsuarioComponent
   },
   { path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];

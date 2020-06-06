@@ -10,6 +10,7 @@ import { ListarUsuariosComponent } from './pages/listar-usuarios/listar-usuarios
 import { GeneroPipe } from './pipes/genero.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -21,7 +22,8 @@ const maskConfig: Partial<IConfig> = {
     LoginComponent,
     RegistrationComponent,
     ListarUsuariosComponent,
-    GeneroPipe
+    GeneroPipe,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,
