@@ -74,7 +74,7 @@ export class RegistrationComponent implements OnInit {
 
     this.dataStoreService.addUser(userData);
     // this.registerForm.reset();
-    this.route.navigate(['/list']);
+    this.route.navigate(['/home']);
   }
 
 }
