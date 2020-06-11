@@ -1,8 +1,8 @@
-import { DataStoreService } from './../../services/data-store.service';
+import { DataStoreService } from '../../shared/services/data-store.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/core/models/user.model';
 import { Router } from '@angular/router';
 
 @Component({

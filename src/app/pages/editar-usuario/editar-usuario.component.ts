@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/core/models/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { DataStoreService } from 'src/app/services/data-store.service';
+import { DataStoreService } from 'src/app/shared/services/data-store.service';
 
 @Component({
   selector: 'app-editar-usuario',

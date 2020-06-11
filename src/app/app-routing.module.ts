@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ListarUsuariosComponent } from './pages/listar-usuarios/listar-usuarios.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 
 

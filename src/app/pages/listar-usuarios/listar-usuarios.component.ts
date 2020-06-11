@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/core/models/user.model';
 //import { usersList } from 'src/app/models/users';
 import { Router } from '@angular/router';
-import { DataStoreService } from 'src/app/services/data-store.service';
+import { DataStoreService } from 'src/app/shared/services/data-store.service';
 
 @Component({
   selector: 'app-listar-usuarios',
