@@ -12,7 +12,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col" sortable="nombreCompleto">Nombre completo</th>
+                                <th scope="col" sortable="nombre">Nombre</th>
+                                <th scope="col" sortable="apellido">Apellido</th>
                                 <th scope="col" sortable="email">Email</th>
                                 <th scope="col" sortable="fechaDeNacimiento">Fecha de nacimiento</th>
                                 <th scope="col" sortable="telefono">Número de teléfono</th>
@@ -27,6 +28,9 @@
                                 </td>
                                 <td>
                                     <ngb-highlight [result]="user.name"></ngb-highlight>
+                                </td>
+                                <td>
+                                    <ngb-highlight [result]="user.lastName"></ngb-highlight>
                                 </td>
                                 <td>
                                     <ngb-highlight [result]="user.email"></ngb-highlight>

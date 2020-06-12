@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { UserDataService } from './user-data.service';
 import { UserDto } from 'src/app/core/models/user-dto.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -18,16 +19,25 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private userDataService: UserDataService
+    private userDataService: UserDataService,
+    private spinner: NgxSpinnerService
   ) { }
 
   async ngOnInit() {
-    const resp = await this.userDataService.getAll();
-    this.usersList = resp.result;
+    this.spinner.show();
 
-    this.total = this.usersList.length;
+    try {
+      const resp = await this.userDataService.getAll();
+      this.usersList = resp.result;
 
-    this.updatePages();
+      this.total = this.usersList.length;
+
+      this.updatePages();
+      this.spinner.hide();
+    } catch (error) {
+      console.log(error);
+      this.spinner.hide();
+    }
   }
 
   get page() {

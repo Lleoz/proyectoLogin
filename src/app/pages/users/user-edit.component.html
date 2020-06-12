@@ -13,9 +13,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Nombre completo</label>
+                                    <label for="">Nombre</label>
                                     <input type="text" class="form-control" formControlName="name" [class.is-invalid]="name.touched && name.hasError('required')">
                                     <div class="invalid-feedback" *ngIf="name.touched && name.hasError('required')">
+                                        Requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Apellido</label>
+                                    <input type="text" class="form-control" formControlName="lastName" [class.is-invalid]="lastName.touched && lastName.hasError('required')">
+                                    <div class="invalid-feedback" *ngIf="lastName.touched && lastName.hasError('required')">
                                         Requerido
                                     </div>
                                 </div>
@@ -74,7 +83,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary" (click)="edit(editUserForm)" [disabled]="editUserForm.invalid">Guardar</button>
-                                <button type="button" class="btn btn-danger ml-3" routerLink="/list">Cancelar</button>
+                                <button type="button" class="btn btn-danger ml-3" routerLink="/users/list">Cancelar</button>
                             </div>
                         </div>
 

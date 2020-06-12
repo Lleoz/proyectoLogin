@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -30,7 +31,8 @@ const maskConfig: Partial<IConfig> = {
     ReactiveFormsModule,
     NgbModule,
     NgxMaskModule.forRoot(maskConfig),
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
