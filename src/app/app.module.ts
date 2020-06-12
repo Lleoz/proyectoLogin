@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { GeneroPipe } from './shared/pipes/genero.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -18,17 +18,18 @@ const maskConfig: Partial<IConfig> = {
 @NgModule({
   declarations: [
     AppComponent,
-    GeneroPipe,
-    NavbarComponent,
     routingComponents,
-    FooterComponent,
+    NotFoundComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule, NgxMaskModule.forRoot(maskConfig),
+    NgbModule,
+    NgxMaskModule.forRoot(maskConfig),
     HttpClientModule
   ],
   providers: [],

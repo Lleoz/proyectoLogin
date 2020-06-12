@@ -1,9 +1,9 @@
-import { DataStoreService } from '../../shared/services/data-store.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { User } from 'src/app/core/models/user.model';
 import { Router } from '@angular/router';
+import { UserStoreService } from 'src/app/shared/mock/user-store.service';
+import { UserDto } from 'src/app/core/models/user-dto.model';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +16,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private dataStoreService: DataStoreService,
+    private userStoreService: UserStoreService,
     private route: Router
   ) { }
 
@@ -29,7 +29,7 @@ export class RegistrationComponent implements OnInit {
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       pwd: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]],
-      birthday: ['', Validators.required],
+      birthDate: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
       genre: ['', Validators.required]
     });
@@ -43,8 +43,8 @@ export class RegistrationComponent implements OnInit {
     return this.registerForm.get('email');
   }
 
-  get birthday() {
-    return this.registerForm.get('birthday');
+  get birthDate() {
+    return this.registerForm.get('birthDate');
   }
 
   get phoneNumber() {
@@ -61,18 +61,20 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(form) {
-    const { fullName, email, pwd, birthday, phoneNumber, genre } = form.value;
-    const userData: User = {
-      id: uuidv4(),
-      fullName,
+    const { name, lastName, secondLastName, email, pwd, birthDate, phoneNumber, genre } = form.value;
+    const userData: UserDto = {
+      id: 0,
+      name,
+      lastName,
+      secondLastName,
       email,
       pwd,
-      birthday,
+      birthDate,
       phoneNumber,
       genre
     };
 
-    this.dataStoreService.addUser(userData);
+    this.userStoreService.addUser(userData);
     // this.registerForm.reset();
     this.route.navigate(['/home']);
   }

@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/core/models/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { DataStoreService } from 'src/app/shared/services/data-store.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { UserDto } from 'src/app/core/models/user-dto.model';
 
 @Component({
   selector: 'app-editar-usuario',
-  templateUrl: './editar-usuario.component.html',
-  styleUrls: ['./editar-usuario.component.css']
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.css']
 })
-export class EditarUsuarioComponent implements OnInit {
-  userEdit: User;
+export class UserEditComponent implements OnInit {
+  userEdit: UserDto;
   editUserForm: FormGroup;
 
   constructor(
     private router: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private dataStoreService: DataStoreService,
+    private dataStoreService: StorageService,
     private route: Router
   ) { }
 
@@ -25,7 +25,7 @@ export class EditarUsuarioComponent implements OnInit {
     this.initializeForm();
 
     const id: string = this.router.snapshot.paramMap.get('id');
-    this.userEdit = this.dataStoreService.getUserById(id);
+    // this.userEdit = this.dataStoreService.getUserById(id);
 
     this.editUserForm.patchValue(this.userEdit);
   }
@@ -41,18 +41,20 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   edit(form) {
-    const { fullName, email, pwd, birthday, phoneNumber, genre } = form.value;
-    const userData: User = {
+    const { name, lastName, secondLastName, email, pwd, birthDate, phoneNumber, genre } = form.value;
+    const userData: UserDto = {
       id: this.userEdit.id,
-      fullName,
+      name,
+      lastName,
+      secondLastName,
       email,
       pwd,
-      birthday,
+      birthDate,
       phoneNumber,
       genre
     };
 
-    this.dataStoreService.updateUser(userData);
+    // this.dataStoreService.updateUser(userData);
     this.route.navigate(['/list']);
   }
 
