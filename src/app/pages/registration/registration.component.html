@@ -47,8 +47,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Fecha de nacimiento</label>
-                                    <input type="date" class="form-control" formControlName="birthday" [class.is-invalid]="(birthday.touched && birthday.hasError('required'))">
-                                    <div class="invalid-feedback" *ngIf="birthday.touched && birthday.hasError('required')">
+                                    <input type="date" class="form-control" formControlName="birthDate" [class.is-invalid]="(birthDate.touched && birthDate.hasError('required'))">
+                                    <div class="invalid-feedback" *ngIf="birthDate.touched && birthDate.hasError('required')">
                                         Requerido
                                     </div>
                                 </div>

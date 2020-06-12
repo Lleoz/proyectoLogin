@@ -26,20 +26,20 @@
                                     <ngb-highlight [result]="user.id"></ngb-highlight>
                                 </td>
                                 <td>
-                                    <ngb-highlight [result]="user.fullName"></ngb-highlight>
+                                    <ngb-highlight [result]="user.name"></ngb-highlight>
                                 </td>
                                 <td>
                                     <ngb-highlight [result]="user.email"></ngb-highlight>
                                 </td>
                                 <td>
-                                    <ngb-highlight [result]="user.birthday | date: 'dd/MM/yyyy'">
+                                    <ngb-highlight [result]="user.birthDate | date: 'dd/MM/yyyy'">
                                     </ngb-highlight>
                                 </td>
                                 <td>
                                     <ngb-highlight [result]="user.phoneNumber"></ngb-highlight>
                                 </td>
                                 <td>
-                                    <ngb-highlight [result]="user.genre | genero"></ngb-highlight>
+                                    <ngb-highlight [result]="user.genre | genre"></ngb-highlight>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" (click)="editUser(user.id)">

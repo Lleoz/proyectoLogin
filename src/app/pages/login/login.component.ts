@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataStoreService } from 'src/app/shared/services/data-store.service';
-import { User } from 'src/app/core/models/user.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { UserStoreService } from 'src/app/shared/mock/user-store.service';
+import { UserDto } from 'src/app/core/models/user-dto.model';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,10 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private route: Router,
-    private dataService: DataStoreService) {
+    private userStoreService: UserStoreService) {
     this.loadForm();
   }
 
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
       });
     }
 
-    const user: User = this.dataService.getUserByEmail(this.form.controls.email.value);
+    const user: UserDto = this.userStoreService.getUserByEmail(this.form.controls.email.value);
 
     if (!user) {
       alert('El usuario o contraseña es incorrecto');
@@ -58,8 +60,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('correo', this.form.controls.email.value);
     }
 
-    this.route.navigate(['/list']);
-
+    this.route.navigate(['/users/list']);
   }
 
   loadForm() {

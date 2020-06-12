@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'genero'
+  name: 'genre'
 })
-export class GeneroPipe implements PipeTransform {
+export class GenrePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
     if (value === '1') {

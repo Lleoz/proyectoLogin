@@ -1,28 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/core/models/user.model';
-//import { usersList } from 'src/app/models/users';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataStoreService } from 'src/app/shared/services/data-store.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { UserDataService } from './user-data.service';
+import { UserDto } from 'src/app/core/models/user-dto.model';
 
 @Component({
   selector: 'app-listar-usuarios',
-  templateUrl: './listar-usuarios.component.html',
-  styleUrls: ['./listar-usuarios.component.css']
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class ListarUsuariosComponent implements OnInit {
+export class UserListComponent implements OnInit {
   total = 0;
   pageSt: number;
   pageSizeSt: number;
-  users: User[] = [];
-  usersList: User[] = [];
+  users: UserDto[] = [];
+  usersList: UserDto[] = [];
 
   constructor(
     private route: Router,
-    private dataStorage: DataStoreService
+    private userDataService: UserDataService
   ) { }
 
-  ngOnInit(): void {
-    this.usersList = this.dataStorage.getUsers();
+  async ngOnInit() {
+    const resp = await this.userDataService.getAll();
+    this.usersList = resp.result;
+
     this.total = this.usersList.length;
 
     this.pageSt = 1;
@@ -50,6 +52,9 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   private updatePages() {
+    if (!this.usersList || this.usersList.length === 0) {
+      return;
+    }
     const pageBase = this.pageSt - 1;
     const itemsPage = Math.min(this.pageSizeSt, this.total);
 

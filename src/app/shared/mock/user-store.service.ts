@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../core/models/user.model';
+import { UserDto } from '../../core/models/user-dto.model';
 
 const usersKey = 'users';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataStoreService {
+export class UserStoreService {
   constructor() { }
 
   addUser(user: any) {
@@ -20,15 +20,15 @@ export class DataStoreService {
     }
   }
 
-  updateUser(userData: User) {
-    const users: User[] = JSON.parse(localStorage.getItem(usersKey));
+  updateUser(userData: UserDto) {
+    const users: UserDto[] = JSON.parse(localStorage.getItem(usersKey));
     if (users) {
       users.find((u, i) => {
         const isUser: boolean = u.id === userData.id;
         if (isUser) {
-          users[i].fullName = userData.fullName;
+          users[i].name = userData.name;
           users[i].email = userData.email;
-          users[i].birthday = userData.birthday;
+          users[i].birthDate = userData.birthDate;
           users[i].phoneNumber = userData.phoneNumber;
           users[i].genre = userData.genre;
         }
