@@ -8,14 +8,23 @@
                     </h4>
                     <div class="card-body">
                         <h6 class="card-title">
-                            id ({{userEdit.id}})
+                            Identificador del usuario #{{userEditId}}
                         </h6>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Nombre completo</label>
-                                    <input type="text" class="form-control" formControlName="fullName" [class.is-invalid]="fullName.touched && fullName.hasError('required')">
-                                    <div class="invalid-feedback" *ngIf="fullName.touched && fullName.hasError('required')">
+                                    <label for="">Nombre</label>
+                                    <input type="text" class="form-control" formControlName="name" [class.is-invalid]="name.touched && name.hasError('required')">
+                                    <div class="invalid-feedback" *ngIf="name.touched && name.hasError('required')">
+                                        Requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Apellido</label>
+                                    <input type="text" class="form-control" formControlName="lastName" [class.is-invalid]="lastName.touched && lastName.hasError('required')">
+                                    <div class="invalid-feedback" *ngIf="lastName.touched && lastName.hasError('required')">
                                         Requerido
                                     </div>
                                 </div>
@@ -23,7 +32,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Correo electr&oacute;nico</label>
-                                    <input type="text" class="form-control" formControlName="email" [class.is-invalid]="(email.touched && fullName.hasError('required')) || email.hasError('email')">
+                                    <input type="text" class="form-control" formControlName="email" [class.is-invalid]="(email.touched && name.hasError('required')) || email.hasError('email')">
                                     <div class="invalid-feedback" *ngIf="email.touched && email.hasError('required')">
                                         Requerido
                                     </div>
@@ -38,8 +47,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Fecha de nacimiento</label>
-                                    <input type="date" class="form-control" formControlName="birthday" [class.is-invalid]="(birthday.touched && birthday.hasError('required'))">
-                                    <div class="invalid-feedback" *ngIf="birthday.touched && birthday.hasError('required')">
+                                    <input type="date" class="form-control" formControlName="birthDate" [class.is-invalid]="(birthDate.touched && birthDate.hasError('required'))">
+                                    <div class="invalid-feedback" *ngIf="birthDate.touched && birthDate.hasError('required')">
                                         Requerido
                                     </div>
                                 </div>
@@ -74,7 +83,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary" (click)="edit(editUserForm)" [disabled]="editUserForm.invalid">Guardar</button>
-                                <button type="button" class="btn btn-danger ml-3" routerLink="/list">Cancelar</button>
+                                <button type="button" class="btn btn-danger ml-3" routerLink="/users/list">Cancelar</button>
                             </div>
                         </div>
 

@@ -12,7 +12,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col" sortable="nombreCompleto">Nombre completo</th>
+                                <th scope="col" sortable="nombre">Nombre</th>
+                                <th scope="col" sortable="apellido">Apellido</th>
                                 <th scope="col" sortable="email">Email</th>
                                 <th scope="col" sortable="fechaDeNacimiento">Fecha de nacimiento</th>
                                 <th scope="col" sortable="telefono">Número de teléfono</th>
@@ -29,6 +30,9 @@
                                     <ngb-highlight [result]="user.name"></ngb-highlight>
                                 </td>
                                 <td>
+                                    <ngb-highlight [result]="user.lastName"></ngb-highlight>
+                                </td>
+                                <td>
                                     <ngb-highlight [result]="user.email"></ngb-highlight>
                                 </td>
                                 <td>
@@ -42,7 +46,7 @@
                                     <ngb-highlight [result]="user.genre | genre"></ngb-highlight>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" (click)="editUser(user.id)">
+                                    <button type="button" class="btn btn-primary" (click)="editUser(user.email)">
                                         <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16"
                                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"

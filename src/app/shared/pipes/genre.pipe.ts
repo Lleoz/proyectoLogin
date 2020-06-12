@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { GenreType } from 'src/app/core/models/genre-type';
 
 @Pipe({
   name: 'genre'
@@ -6,11 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class GenrePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    if (value === '1') {
+    if (value === GenreType.MALE) {
       return 'Masculino';
     }
 
-    if (value === '2') {
+    if (value === GenreType.FEMALE) {
       return 'Femenino';
     }
 

@@ -5,6 +5,7 @@ import { ApiResponse } from 'src/app/core/models/api-response';
 import { tap } from 'rxjs/operators';
 import { UserDto } from 'src/app/core/models/user-dto.model';
 import { Observable } from 'rxjs';
+import { ApiRequest } from 'src/app/core/models/api-request';
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +25,24 @@ export class UserDataService {
     return response.body;
   }
 
-  get(email: string) {
+  async get(email: string) {
     const url = this.urlService.composeUrlUsers('users/get/' + email);
 
-    this.dataService.get(url)
-      .pipe<UserDto>(tap((response: any) => {
-        return response;
-      }));
+    const response = await this.dataService.get<ApiResponse<UserDto>>(url).toPromise();
+
+    return response.body;
+  }
+
+  async put(id: number, user: UserDto) {
+    const url = this.urlService.composeUrlUsers('users/put/' + id.toString());
+
+    const apiRequest: ApiRequest<UserDto> = {
+      data: user
+    };
+
+    const response = await this.dataService.put<ApiRequest<UserDto>>(url, apiRequest).toPromise();
+
+    return response.body;
   }
 
 }
