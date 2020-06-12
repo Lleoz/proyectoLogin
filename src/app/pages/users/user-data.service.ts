@@ -24,13 +24,12 @@ export class UserDataService {
     return response.body;
   }
 
-  get(email: string) {
-    const url = this.urlService.composeUrlUsers('users/get/' + email);
+  async get(email: string) {
+      const url = this.urlService.composeUrlUsers('users/get/' + email);
 
-    this.dataService.get(url)
-      .pipe<UserDto>(tap((response: any) => {
-        return response;
-      }));
+      const response = await this.dataService.get<ApiResponse<UserDto>>(url).toPromise();
+  
+      return response.body;
   }
 
 }

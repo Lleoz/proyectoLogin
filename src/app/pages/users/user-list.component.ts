@@ -11,8 +11,8 @@ import { UserDto } from 'src/app/core/models/user-dto.model';
 })
 export class UserListComponent implements OnInit {
   total = 0;
-  pageSt: number;
-  pageSizeSt: number;
+  pageSt = 1;
+  pageSizeSt = 10;
   users: UserDto[] = [];
   usersList: UserDto[] = [];
 
@@ -26,9 +26,6 @@ export class UserListComponent implements OnInit {
     this.usersList = resp.result;
 
     this.total = this.usersList.length;
-
-    this.pageSt = 1;
-    this.pageSizeSt = 10;
 
     this.updatePages();
   }
@@ -52,9 +49,6 @@ export class UserListComponent implements OnInit {
   }
 
   private updatePages() {
-    if (!this.usersList || this.usersList.length === 0) {
-      return;
-    }
     const pageBase = this.pageSt - 1;
     const itemsPage = Math.min(this.pageSizeSt, this.total);
 
@@ -62,8 +56,8 @@ export class UserListComponent implements OnInit {
     this.users = this.usersList.slice(pageFrom, pageFrom + itemsPage);
   }
 
-  editUser(userId: string) {
-    this.route.navigate([`/edit/${userId}`]);
+  editUser(email: string) {
+    this.route.navigate([`/users/edit/${email}`]);
   }
 
 }
