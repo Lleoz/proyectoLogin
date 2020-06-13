@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { UserStoreService } from 'src/app/shared/mock/user-store.service';
 import { UserDto } from 'src/app/core/models/user-dto.model';
+import { LoginDataService } from './login-data.service';
+import { SecurityService } from 'src/app/shared/services/security.service';
+import { AlertService } from 'src/app/core/helpers/alert.service';
+import { MsgType } from 'src/app/core/models/consts';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private userStoreService: UserStoreService) {
+    private securityService: SecurityService,
+    private loginDataService: LoginDataService,
+    private alertService: AlertService) {
     this.loadForm();
   }
 
@@ -36,7 +42,7 @@ export class LoginComponent implements OnInit {
     return this.form.get('password').touched && this.form.get('password').invalid;
   }
 
-  login() {
+  async login() {
 
     if (this.form.invalid) {
       return Object.values(this.form.controls).forEach(controls => {
@@ -44,21 +50,19 @@ export class LoginComponent implements OnInit {
       });
     }
 
-    const user: UserDto = this.userStoreService.getUserByEmail(this.form.controls.email.value);
-
-    if (!user) {
-      alert('El usuario o contraseña es incorrecto');
-      return;
-    }
-
-    if (user.pwd !== this.form.controls.password.value) {
-      alert('El usuario o contraseña es incorrecto');
-      return;
-    }
-
     if (this.form.controls.recordarme.value) {
       localStorage.setItem('correo', this.form.controls.email.value);
     }
+
+    // Ejecuta el login
+    const resp = await this.loginDataService.Login(this.form.value);
+
+    if (resp.status !== 200) {
+      await this.alertService.show('Login', 'El usuario o contraseña es incorrecto.', MsgType.ERROR);
+      return;
+    }
+
+    this.securityService.SetAuthorizationData(resp.result.token);
 
     this.route.navigate(['/users/list']);
   }
