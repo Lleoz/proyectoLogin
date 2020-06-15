@@ -19,17 +19,22 @@ export class DataService {
   /* GET */
   /*******/
   get<T>(url: string, params?: any) {
-    return this.http.get<T>(url)
-      .pipe(
-        retryWhen(genericRetryStrategy()),
-        timeout(SERVICES_TIMEOUT),
-        tap((res: T) => {
-          return res;
-        }),
-        catchError(err => {
-          throw (err);
-        })
-      );
+    const headers = new HttpHeaders();
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers.append('Access-Control-Allow-Origin', '*');
+
+    return this.http.get<T>(url, { headers });
+      // .pipe(
+      //   retryWhen(genericRetryStrategy()),
+      //   timeout(SERVICES_TIMEOUT),
+      //   tap((res: T) => {
+      //     return res;
+      //   }),
+      //   catchError(err => {
+      //     throw (err);
+      //   })
+      // );
   }
 
   /********/

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/core/models/user-dto.model';
 import { UserDataService } from './user-data.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastService } from 'src/app/core/helpers/toast.service';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -20,7 +21,8 @@ export class UserEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userDataService: UserDataService,
     private route: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastService: ToastService
   ) { }
 
   async ngOnInit() {
@@ -30,17 +32,14 @@ export class UserEditComponent implements OnInit {
 
       this.initializeForm();
 
-      const email: string = this.router.snapshot.paramMap.get('email');
-      const resp = await this.userDataService.get(email);
+      const id: number = +this.router.snapshot.paramMap.get('id');
+      const resp = await this.userDataService.get(id);
 
       this.userEdit = resp.result;
       this.userEditId = this.userEdit.id;
-      console.log(this.userEdit);
 
+      this.userEdit.birthDate = this.userEdit.birthDate.substring(0, 10);
       this.editUserForm.patchValue(this.userEdit);
-      this.editUserForm.patchValue({
-        birthDate: this.userEdit.birthDate.substring(0, 10)
-      });
       this.spinner.hide();
     } catch (error) {
       console.log(error);
@@ -78,8 +77,10 @@ export class UserEditComponent implements OnInit {
 
       await this.userDataService.put(this.userEditId, userData);
 
-      this.route.navigate(['/users/list']);
+      this.toastService.showSuccess(`El usuario ${this.userEdit.email} se modificó satisfactoriamente`); this.spinner.hide();
       this.spinner.hide();
+
+      this.route.navigate(['/users/list']);
     } catch (error) {
       console.log(error);
       this.spinner.hide();

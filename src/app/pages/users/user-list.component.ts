@@ -66,8 +66,8 @@ export class UserListComponent implements OnInit {
     this.users = this.usersList.slice(pageFrom, pageFrom + itemsPage);
   }
 
-  editUser(email: string) {
-    this.route.navigate([`/users/edit/${email}`]);
+  editUser(id: number) {
+    this.route.navigate([`/users/edit/${id}`]);
   }
 
 }
