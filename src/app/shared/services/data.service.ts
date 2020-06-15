@@ -24,17 +24,17 @@ export class DataService {
     headers.append('Access-Control-Allow-Methods', 'GET');
     headers.append('Access-Control-Allow-Origin', '*');
 
-    return this.http.get<T>(url, { headers });
-      // .pipe(
-      //   retryWhen(genericRetryStrategy()),
-      //   timeout(SERVICES_TIMEOUT),
-      //   tap((res: T) => {
-      //     return res;
-      //   }),
-      //   catchError(err => {
-      //     throw (err);
-      //   })
-      // );
+    return this.http.get<T>(url)
+      .pipe(
+        retryWhen(genericRetryStrategy()),
+        timeout(SERVICES_TIMEOUT),
+        tap((res: T) => {
+          return res;
+        }),
+        catchError(err => {
+          throw (err);
+        })
+      );
   }
 
   /********/
