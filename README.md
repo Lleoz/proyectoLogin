@@ -10,6 +10,10 @@
 - [x] [@RiojasMx](https://discordapp.com/users/201813752356536320)
 - [x] [@programando.ideas](https://discordapp.com/users/716354253081542666)
 
+# Video demo
+
+[Prueba del cliente y api](https://youtu.be/1rJqbYze7-4)
+
 ## División del trabajo
 
 Son 4 vistas:
