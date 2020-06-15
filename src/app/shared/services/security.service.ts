@@ -27,6 +27,11 @@ export class SecurityService {
     return this.storageService.retrieve(this.TOKEN_KEY);
   }
 
+  public Authorize() {
+    this.ResetAuthorizationData();
+    window.location.href = '/';
+  }
+
   public Logoff() {
     this.ResetAuthorizationData();
     this.authenticationSource.next(false);
