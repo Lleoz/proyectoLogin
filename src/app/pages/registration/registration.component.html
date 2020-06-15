@@ -12,9 +12,18 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="">Nombre completo</label>
-                                    <input type="text" class="form-control" formControlName="fullName" [class.is-invalid]="fullName.touched && fullName.hasError('required')">
-                                    <div class="invalid-feedback" *ngIf="fullName.touched && fullName.hasError('required')">
+                                    <label for="">Nombre</label>
+                                    <input type="text" class="form-control" formControlName="name" [class.is-invalid]="name.touched && name.hasError('required')">
+                                    <div class="invalid-feedback" *ngIf="name.touched && name.hasError('required')">
+                                        Requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Apellido</label>
+                                    <input type="text" class="form-control" formControlName="lastName" [class.is-invalid]="lastName.touched && lastName.hasError('required')">
+                                    <div class="invalid-feedback" *ngIf="lastName.touched && lastName.hasError('required')">
                                         Requerido
                                     </div>
                                 </div>
@@ -22,23 +31,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Correo electr&oacute;nico</label>
-                                    <input type="text" class="form-control" formControlName="email" [class.is-invalid]="(email.touched && fullName.hasError('required')) || email.hasError('email')">
+                                    <input type="text" class="form-control" formControlName="email" [class.is-invalid]="(email.touched && name.hasError('required')) || email.hasError('email')">
                                     <div class="invalid-feedback" *ngIf="email.touched && email.hasError('required')">
                                         Requerido
                                     </div>
                                     <div class="invalid-feedback" *ngIf="email.hasError('email')">
                                         Correo electr&oacute;nico inv&aacute;lido
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Contraseña</label>
-                                    <input formControlName="pwd" type="password" [class.is-invalid]="passwordNoValid" class="form-control" id="exampleInputPassword1">
-                                    <span class="text-danger" *ngIf="passwordNoValid || registerForm.controls['pwd'].hasError('pattern')"><small>La
-                                            contraseña debe contener por lo menos 8 caracteres, una mayúscula, una
-                                            minúscula y un número</small></span>
                                 </div>
                             </div>
                         </div>

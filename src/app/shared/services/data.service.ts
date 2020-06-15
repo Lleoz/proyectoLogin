@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { throwError, Observable, timer } from 'rxjs';
+import { catchError, tap, retry, timeout, mergeMap, finalize, retryWhen } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Guid } from 'src/app/core/helpers/guid';
 import { SecurityService } from './security.service';
+import { SERVICES_TIMEOUT, SERVICES_RETRY } from 'src/app/core/models/consts';
+import { genericRetryStrategy } from 'src/app/core/helpers/rxjs-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -17,61 +18,78 @@ export class DataService {
   /*******/
   /* GET */
   /*******/
-  get<T>(url: string, params?: any): Observable<HttpResponse<T>> {
-    const httpHeaders: HttpHeaders = this.getHeaders();
-
-    return this.http.get<T>(url, {
-      headers: httpHeaders,
-      params,
-      observe: 'response'
-    });
+  get<T>(url: string, params?: any) {
+    return this.http.get<T>(url)
+      .pipe(
+        retryWhen(genericRetryStrategy()),
+        timeout(SERVICES_TIMEOUT),
+        tap((res: T) => {
+          return res;
+        }),
+        catchError(err => {
+          throw (err);
+        })
+      );
   }
 
   /********/
   /* POST */
   /********/
-  post<T>(url: string, data: any): Observable<HttpResponse<T>> {
+  post<T>(url: string, data: any) {
     return this.doPost<T>(url, data);
   }
 
-  private doPost<T>(url: string, data: any): Observable<HttpResponse<T>> {
-    const httpHeaders: HttpHeaders = this.getHeaders();
-
-    return this.http.post<T>(url, data,
-      {
-        headers: httpHeaders,
-        observe: 'response'
-      });
+  private doPost<T>(url: string, data: any) {
+    return this.http.post<T>(url, data)
+      .pipe(
+        retryWhen(genericRetryStrategy()),
+        timeout(SERVICES_TIMEOUT),
+        tap((res: T) => {
+          return res;
+        }),
+        catchError(err => {
+          throw (err);
+        })
+      );
   }
 
   /*******/
   /* PUT */
   /*******/
-  public put<T>(url: string, data: any): Observable<HttpResponse<T>> {
+  public put<T>(url: string, data: any) {
     return this.doPut<T>(url, data);
   }
 
-  private doPut<T>(url: string, data: any): Observable<HttpResponse<T>> {
-    const httpHeaders: HttpHeaders = this.getHeaders();
-
-    return this.http.put<T>(url, data,
-      {
-        headers: httpHeaders,
-        observe: 'response'
-      });
+  private doPut<T>(url: string, data: any) {
+    return this.http.put<T>(url, data)
+      .pipe(
+        retryWhen(genericRetryStrategy()),
+        timeout(SERVICES_TIMEOUT),
+        tap((res: T) => {
+          return res;
+        }),
+        catchError(err => {
+          throw (err);
+        })
+      );
   }
 
   /*******/
   /* DEL */
   /*******/
-  delete<T>(url: string, params?: any): Observable<HttpResponse<T>> {
-    const httpHeaders: HttpHeaders = this.getHeaders();
+  delete<T>(url: string, params?: any) {
 
-    return this.http.delete<T>(url,
-      {
-        headers: httpHeaders,
-        observe: 'response'
-      });
+    return this.http.delete<T>(url)
+      .pipe(
+        retryWhen(genericRetryStrategy()),
+        timeout(SERVICES_TIMEOUT),
+        tap((res: T) => {
+          return res;
+        }),
+        catchError(err => {
+          throw (err);
+        })
+      );
   }
 
   private handleError(error: any) {
@@ -89,16 +107,5 @@ export class DataService {
 
     // return an observable with a user-facing error message
     return throwError(error || 'server error');
-  }
-
-  getHeaders(): HttpHeaders {
-    let httpHeaders: HttpHeaders = new HttpHeaders();
-
-    // const token = this.securityService.GetToken();
-    // if (token) {
-    //   httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
-    // }
-
-    return httpHeaders;
   }
 }

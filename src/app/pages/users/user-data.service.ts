@@ -22,7 +22,7 @@ export class UserDataService {
 
     const response = await this.dataService.get<ApiResponse<UserDto[]>>(url).toPromise();
 
-    return response.body;
+    return response;
   }
 
   async get(email: string) {
@@ -30,7 +30,7 @@ export class UserDataService {
 
     const response = await this.dataService.get<ApiResponse<UserDto>>(url).toPromise();
 
-    return response.body;
+    return response;
   }
 
   async put(id: number, user: UserDto) {
@@ -42,7 +42,7 @@ export class UserDataService {
 
     const response = await this.dataService.put<ApiRequest<UserDto>>(url, apiRequest).toPromise();
 
-    return response.body;
+    return response;
   }
 
 }

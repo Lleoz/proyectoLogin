@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/shared/services/storage.service';
-import { UserStoreService } from 'src/app/shared/mock/user-store.service';
-import { UserDto } from 'src/app/core/models/user-dto.model';
 import { LoginDataService } from './login-data.service';
 import { SecurityService } from 'src/app/shared/services/security.service';
 import { AlertService } from 'src/app/core/helpers/alert.service';
-import { MsgType } from 'src/app/core/models/consts';
+import { MsgType, MESSAGE_GENERIC_ERROR } from 'src/app/core/models/consts';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastService } from 'src/app/core/helpers/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +22,9 @@ export class LoginComponent implements OnInit {
     private route: Router,
     private securityService: SecurityService,
     private loginDataService: LoginDataService,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    private toastService: ToastService,
+    private spinner: NgxSpinnerService) {
     this.loadForm();
   }
 
@@ -43,8 +44,10 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    this.spinner.show();
 
     if (this.form.invalid) {
+      this.spinner.hide();
       return Object.values(this.form.controls).forEach(controls => {
         controls.markAllAsTouched();
       });
@@ -54,17 +57,25 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('correo', this.form.controls.email.value);
     }
 
-    // Ejecuta el login
-    const resp = await this.loginDataService.Login(this.form.value);
+    try {
 
-    if (resp.status !== 200) {
-      await this.alertService.show('Login', 'El usuario o contraseña es incorrecto.', MsgType.ERROR);
-      return;
+      // Ejecuta el login
+      const resp = await this.loginDataService.Login(this.form.value);
+
+      if (resp.status !== 200) {
+        await this.alertService.show('Login', 'El usuario o contraseña es incorrecto.', MsgType.ERROR);
+        return;
+      }
+
+      this.securityService.SetAuthorizationData(resp.result.token);
+      this.spinner.hide();
+      this.toastService.showSuccess('Bienvenido!');
+      this.route.navigate(['/users/list']);
+
+    } catch (error) {
+      this.spinner.hide();
+      await this.alertService.show('Login', MESSAGE_GENERIC_ERROR, MsgType.ERROR);
     }
-
-    this.securityService.SetAuthorizationData(resp.result.token);
-
-    this.route.navigate(['/users/list']);
   }
 
   loadForm() {
