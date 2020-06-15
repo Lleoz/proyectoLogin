@@ -5,3 +5,8 @@ export enum MsgType {
     INFO = 'info',
     QUESTION = 'question'
 }
+
+export const SERVICES_RETRY = 3;
+export const SERVICES_TIMEOUT = 15000;
+
+export const MESSAGE_GENERIC_ERROR = 'Ocurrió un problema. Por favor, intente mas tarde.';

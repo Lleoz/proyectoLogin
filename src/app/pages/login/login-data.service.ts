@@ -28,6 +28,6 @@ export class LoginDataService {
 
     const response = await this.dataService.post<ApiResponse<LoginResponse>>(url, apiReq).toPromise();
 
-    return response.body;
+    return response;
   }
 }

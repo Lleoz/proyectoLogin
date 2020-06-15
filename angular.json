@@ -25,6 +25,7 @@
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "node_modules/ngx-toastr/toastr.css",
                             "src/styles.css"
                         ],
                         "scripts": []
@@ -86,7 +87,9 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.css"
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "src/styles.css",
+                            "node_modules/ngx-toastr/toastr.css"
                         ],
                         "scripts": []
                     }
@@ -118,10 +121,10 @@
                 }
             }
         }
-      },
-  "defaultProject": "proyectoLogin",
-  "cli": {
-    "analytics": "8b08faec-d333-4019-8117-fe79a93c8f3b"
-  }
+    },
+    "defaultProject": "proyectoLogin",
+    "cli": {
+        "analytics": "8b08faec-d333-4019-8117-fe79a93c8f3b"
+    }
 
 }

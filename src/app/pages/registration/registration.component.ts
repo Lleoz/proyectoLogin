@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
-import { UserStoreService } from 'src/app/shared/mock/user-store.service';
 import { UserDto } from 'src/app/core/models/user-dto.model';
+import { MsgType, MESSAGE_GENERIC_ERROR } from 'src/app/core/models/consts';
+import { RegistrationDataService } from './registration-data.service';
+import { AlertService } from 'src/app/core/helpers/alert.service';
+import { ToastService } from 'src/app/core/helpers/toast.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { GenreType } from 'src/app/core/models/genre-type';
 
 @Component({
   selector: 'app-registration',
@@ -16,8 +20,11 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userStoreService: UserStoreService,
-    private route: Router
+    private registrationDataService: RegistrationDataService,
+    private route: Router,
+    private alertService: AlertService,
+    private toastService: ToastService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -26,17 +33,21 @@ export class RegistrationComponent implements OnInit {
 
   initializeForm() {
     this.registerForm = this.formBuilder.group({
-      fullName: ['', Validators.required],
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      pwd: ['', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$')]],
       birthDate: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
       genre: ['', Validators.required]
     });
   }
 
-  get fullName() {
-    return this.registerForm.get('fullName');
+  get name() {
+    return this.registerForm.get('name');
+  }
+
+  get lastName() {
+    return this.registerForm.get('lastName');
   }
 
   get email() {
@@ -60,23 +71,39 @@ export class RegistrationComponent implements OnInit {
       this.registerForm.get('pwd').invalid;
   }
 
-  register(form) {
-    const { name, lastName, secondLastName, email, pwd, birthDate, phoneNumber, genre } = form.value;
-    const userData: UserDto = {
-      id: 0,
-      name,
-      lastName,
-      secondLastName,
-      email,
-      pwd,
-      birthDate,
-      phoneNumber,
-      genre
-    };
+  async register(form) {
+    this.spinner.show();
 
-    this.userStoreService.addUser(userData);
-    // this.registerForm.reset();
-    this.route.navigate(['/home']);
+    try {
+
+      const { name, lastName, secondLastName, email, pwd, birthDate, phoneNumber, genre } = form.value;
+      const userData: UserDto = {
+        id: 0,
+        name,
+        lastName,
+        secondLastName,
+        email,
+        pwd,
+        birthDate,
+        phoneNumber,
+        genre
+      };
+      console.log('userData', userData);
+      const resp = await this.registrationDataService.Register(userData);
+
+      if (resp.status !== 200) {
+        await this.alertService.show('Registro', MESSAGE_GENERIC_ERROR, MsgType.ERROR);
+        return;
+      }
+
+      this.spinner.hide();
+      this.route.navigate(['/home']);
+
+    } catch (error) {
+      this.spinner.hide();
+      await this.alertService.show('Registro', MESSAGE_GENERIC_ERROR, MsgType.ERROR);
+    }
+
   }
 
 }
