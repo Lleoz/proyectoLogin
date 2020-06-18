@@ -1,10 +1,11 @@
 import { mergeMap, finalize } from 'rxjs/operators';
 import { Observable, timer, throwError } from 'rxjs';
+import { SERVICES_RETRY } from '../models/consts';
 
 // https://www.learnrxjs.io/learn-rxjs/operators/error_handling/retrywhen
 export const genericRetryStrategy = (
   {
-    maxRetryAttempts = 3,
+    maxRetryAttempts = SERVICES_RETRY,
     scalingDuration = 1000,
     excludedStatusCodes = []
   }: {

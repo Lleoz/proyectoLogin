@@ -29,6 +29,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
+    window['popupStatus'] = 'loading';
   }
 
   initializeForm() {
@@ -95,7 +96,8 @@ export class RegistrationComponent implements OnInit {
         await this.alertService.show('Registro', MESSAGE_GENERIC_ERROR, MsgType.ERROR);
         return;
       }
-
+      console.log('window[popupStatus] = closed');
+      window['popupStatus'] = 'closed';
       this.spinner.hide();
       this.route.navigate(['/home']);
 
