@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 import { UrlService } from 'src/app/core/helpers/url.service';
 import { ApiResponse } from 'src/app/core/models/api-response';
-import { tap } from 'rxjs/operators';
 import { UserDto } from 'src/app/core/models/user-dto.model';
-import { Observable } from 'rxjs';
 import { ApiRequest } from 'src/app/core/models/api-request';
 
 @Injectable({
