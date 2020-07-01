@@ -29,6 +29,7 @@ Guía para poder instalar las herramientas necesarias para ejecutar el proyecto.
 - **Configuración del entorno**
 	- Abrir el archivo **src\environments\environment.ts** y setear la url para que apunte a la [API](https://github.com/Lleoz/SegundoEjercicio) hecha en .net core:
 		- `urlApiUsers: 'http://10.0.0.4:45459/api/'`
+    - [Configuración del proyecto API](https://github.com/Lleoz/SegundoEjercicio#2-ejecutar-el-proyecto)
 - **Ejecución**
   - `ng serve -o`
 ------------
