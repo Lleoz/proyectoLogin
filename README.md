@@ -1,6 +1,6 @@
-# ProyectoLogin
+# Proyecto Web en Angular
 
-# Integrantes del equipo
+## Integrantes del equipo
 
 - [x] [@Lleoz](https://discordapp.com/users/476574369229832203)
 - [x] [@josue.samano](https://discordapp.com/users/335850826318741506)
@@ -10,9 +10,28 @@
 - [x] [@RiojasMx](https://discordapp.com/users/201813752356536320)
 - [x] [@programando.ideas](https://discordapp.com/users/716354253081542666)
 
-# Video demo
+## Video
+Video demo: [Prueba del cliente y api](https://youtu.be/1rJqbYze7-4)
 
-[Prueba del cliente y api](https://youtu.be/1rJqbYze7-4)
+------------
+# Instalación del entorno de trabajo para ejecutar el proyecto
+Guía para poder instalar las herramientas necesarias para ejecutar el proyecto.
+### 1. Software requerido
+- [x] [GIT](https://git-scm.com/downloads) (opcional)
+- [x] [Node.js](https://nodejs.org/es/)
+- [x] [vsCode](https://code.visualstudio.com/) (opcional)
+
+### 2. Ejecutar el proyecto
+- **Descargar e inicializar el proyecto**
+`git clone https://github.com/Lleoz/proyectoLogin.git`
+`cd proyectoLogin`
+`npm install`
+- **Configuración del entorno**
+	- Abrir el archivo **src\environments\environment.ts** y setear la url para que apunte a la [API](https://github.com/Lleoz/SegundoEjercicio) hecha en .net core:
+		- `urlApiUsers: 'http://10.0.0.4:45459/api/'`
+- **Ejecución**
+`ng serve -o`
+------------
 
 ## División del trabajo
 
