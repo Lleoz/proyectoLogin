@@ -23,14 +23,14 @@ Guía para poder instalar las herramientas necesarias para ejecutar el proyecto.
 
 ### 2. Ejecutar el proyecto
 - **Descargar e inicializar el proyecto**
-`git clone https://github.com/Lleoz/proyectoLogin.git`
-`cd proyectoLogin`
-`npm install`
+  - `git clone https://github.com/Lleoz/proyectoLogin.git`
+  - `cd proyectoLogin`
+  - `npm install`
 - **Configuración del entorno**
 	- Abrir el archivo **src\environments\environment.ts** y setear la url para que apunte a la [API](https://github.com/Lleoz/SegundoEjercicio) hecha en .net core:
 		- `urlApiUsers: 'http://10.0.0.4:45459/api/'`
 - **Ejecución**
-`ng serve -o`
+  - `ng serve -o`
 ------------
 
 ## División del trabajo
